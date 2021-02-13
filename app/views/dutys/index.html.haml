@@ -3,7 +3,6 @@
 %div.title
   %h1.title-ja 当番表
   %p.title-en duty roster
-
   %p.title.duty ホスト役
   %br/
 
@@ -15,21 +14,17 @@
     = link_to "ログイン", new_user_session_path, class: "post"
     = link_to "新規登録", new_user_registration_path, class: "post"
 
-
-
 %table.roster 
   %tr 
     %th 日付
     - @user.each do |user|
-      %th>
+      %th.name
         = user.nickname
   %tr
     %td 2021/2/13
-    %td 
-    %td 
-    %td 
-    %td 
-      %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
+    - @user.count.times do
+      %td.check
+        %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
   %tr 
     %td 2021/2/12
     %td 
