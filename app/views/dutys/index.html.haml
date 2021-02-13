@@ -20,11 +20,10 @@
 %table.roster 
   %tr 
     %th 日付
-    %th dy
-    %th ey
-    %th ks
-    %th rh
-  %tr 
+    - @user.each do |user|
+      %th>
+        = user.nickname
+  %tr
     %td 2021/2/13
     %td 
     %td 
