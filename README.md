@@ -9,7 +9,8 @@
 | encrypted_password  | string    | null:false             |
 
 ### Association
-- has_many :dutys, through: :duty_user
+- has_many :duty_users
+- has_many :duties, through: :duty_users
 - belongs_to :check
 
 ## dutyテーブル
@@ -19,14 +20,15 @@
 | name                | string    | null:false    |
 
 ### Association
-- has_many :users, through: :duty_user
+- has_many :duty_users
+- has_many :users, through: :duty_users
 
 ## duty-userテーブル
 
-| Column     | Type         | Options                      |
-| ---------- | ------------ | ---------------------------- |
-| duty       | reference    | null:false,foreign_key:true  |
-| user       | reference    | null:false,foreign_key:true  |
+| Column     | Type         | Options           |
+| ---------- | ------------ | ----------------- |
+| duty       | reference    | foreign_key:true  |
+| user       | reference    | foreign_key:true  |
 
 ### Association
 - belongs_to :duty
@@ -39,7 +41,7 @@
 | date                | date      | null:false    |
 
 ### Association
-- has_many :dutys, through: :duty_check
+- has_many :duties, through: :duty_check
 
 ## duty-checkテーブル
 
