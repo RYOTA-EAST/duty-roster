@@ -5,6 +5,17 @@
   %p.title-en duty roster
 
   %p.title.duty ホスト役
+  %br/
+
+%div.login
+  - if user_signed_in?
+    = "ユーザー名：#{current_user.nickname}"
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
+  - else
+    = link_to "ログイン", new_user_session_path, class: "post"
+    = link_to "新規登録", new_user_registration_path, class: "post"
+
+
 
 %table.roster 
   %tr 
