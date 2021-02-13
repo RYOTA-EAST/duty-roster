@@ -1,24 +1,53 @@
-# README
+# データベース設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## userテーブル
 
-Things you may want to cover:
+| Column              | Type      | Options                |
+| ------------------- | --------- | ---------------------- |
+| nickname            | string    | null:false,unique:true |
+| email               | string    | null:false,unique:true |
+| encrypted_password  | string    | null:false             |
 
-* Ruby version
+### Association
+- has_many :dutys, through: :duty_user
+- belongs_to :check
 
-* System dependencies
+## dutyテーブル
 
-* Configuration
+| Column              | Type      | Options       |
+| ------------------- | --------- | ------------- |
+| name                | string    | null:false    |
 
-* Database creation
+### Association
+- has_many :users, through: :duty_user
 
-* Database initialization
+## duty-userテーブル
 
-* How to run the test suite
+| Column     | Type         | Options                      |
+| ---------- | ------------ | ---------------------------- |
+| duty       | reference    | null:false,foreign_key:true  |
+| user       | reference    | null:false,foreign_key:true  |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :duty
+- belongs_to :user
 
-* Deployment instructions
+## checkテーブル
 
-* ...
+| Column              | Type      | Options       |
+| ------------------- | --------- | ------------- |
+| date                | date      | null:false    |
+
+### Association
+- has_many :dutys, through: :duty_check
+
+## duty-checkテーブル
+
+| Column     | Type         | Options                      |
+| ---------- | ------------ | ---------------------------- |
+| duty       | reference    | null:false,foreign_key:true  |
+| check      | reference    | null:false,foreign_key:true  |
+
+### Association
+- belongs_to :duty
+- belongs_to :check
