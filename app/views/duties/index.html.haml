@@ -3,7 +3,10 @@
 %div.title
   %h1.title-ja 当番表
   %p.title-en duty roster
-  %p.title.duty ホスト役
+  %p.title.duty 
+    %a{ :href => new_duty_path, :id => 'anchor1' } 当番表作成
+    - @duty.each do |duty|
+      %a{ :href => 'http://google.co.jp', :id => 'anchor1' }= duty.name
   %br/
 
 %div.login
