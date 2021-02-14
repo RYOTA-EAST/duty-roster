@@ -1,0 +1,17 @@
+%header 
+  %div.title
+    %a.title-ja{ :href => root_path } 当番表
+    %p.title-en duty roster
+    %p.title.duty 
+
+  %div.login
+    - if user_signed_in?
+      .user-name
+        = "ユーザー名：#{current_user.nickname}"
+      .user-btn
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else
+      .user-btn
+        = link_to "ログイン", new_user_session_path, class: "post"
+      .user-btn
+        = link_to "新規登録", new_user_registration_path, class: "post"

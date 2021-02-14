@@ -1,47 +1,68 @@
+= render 'shared/header' 
+
 %body 
+.content
+  .left-content
+    %a.duty-btn{ :href => new_duty_path }当番表作成
+    %ul.duty-group
+      - @duty.each do |duty|
+        %li.duty-list
+          %a{ :href => duty_path(duty.id) }= duty.name
+  .right-content
+    %div.roster
+      %p ホスト役
+      %table.roster 
+        %tr 
+          %th 日付
+          - @user.each do |user|
+            %th.roster-name
+              = user.nickname
+        %tr
+          %td test/each
+          - @user.count.times do
+            %td.check
+              %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
+        %tr 
+          %td 2021/2/15
+          %td 
+          %td 
+          %td 
+          %td 
+        %tr 
+          %td 2021/2/14
+          %td 
+          %td ○
+          %td 
+          %td 
+        %tr 
+          %td 2021/2/13
+          %td 
+          %td ◎
+          %td 
+          %td 
+        %tr 
+          %td 2021/2/12
+          %td 
+          %td 
+          %td 
+          %td ○
+        %tr 
+          %td 2021/2/11
+          %td ○
+          %td 
+          %td 
+          %td 
+        %tr 
+          %td 2021/2/10
+          %td 
+          %td 
+          %td 
+          %td ○
+        %tr 
+          %td 2021/2/9
+          %td 
+          %td 
+          %td ○
+          %td 
 
-%div.title
-  %h1.title-ja 当番表
-  %p.title-en duty roster
-  %p.title.duty 
-    %a{ :href => new_duty_path, :id => 'anchor1' } 当番表作成
-    - @duty.each do |duty|
-      %a{ :href => 'http://google.co.jp', :id => 'anchor1' }= duty.name
-  %br/
-
-%div.login
-  - if user_signed_in?
-    = "ユーザー名：#{current_user.nickname}"
-    = link_to "ログアウト", destroy_user_session_path, method: :delete
-  - else
-    = link_to "ログイン", new_user_session_path, class: "post"
-    = link_to "新規登録", new_user_registration_path, class: "post"
-
-%table.roster 
-  %tr 
-    %th 日付
-    - @user.each do |user|
-      %th.name
-        = user.nickname
-  %tr
-    %td 2021/2/13
-    - @user.count.times do
-      %td.check
-        %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
-  %tr 
-    %td 2021/2/12
-    %td 
-    %td 
-    %td ○
-    %td 
-  %tr 
-    %td 2021/2/11
-    %td 
-    %td ○
-    %td 
-    %td 
-
-
-
-
-%p Find me in app/views/dutys/index.html.erb
+= render 'shared/footer' 

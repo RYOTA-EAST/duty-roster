@@ -1,3 +1,5 @@
+= render 'shared/header' 
+
 %div.duty-form
   %h1 新規当番表
   = form_with model: @duty, local: true do |f|
@@ -8,3 +10,4 @@
     %input{:name => "duty[user_ids][]", :type => "hidden", :value => current_user.id}
 
     = f.submit
+= render 'shared/footer' 
