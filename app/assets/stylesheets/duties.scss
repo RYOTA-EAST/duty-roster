@@ -1,10 +1,28 @@
+header{
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.user-name{
+  padding: 10px;
+}
+
+.user-btn{
+  padding: 10px;
+  background-color: lightblue;
+}
+
 div.title{
   display: flex;
   align-items: center;
+  width: 250px;
+  background-color: lightblue;
 }
 
 .title-ja{
   padding: 10px;
+  font-size: 30px;
 }
 
 .title-en{
@@ -15,14 +33,55 @@ div.title{
   padding: 10px;
 }
 
+.login{
+  display: flex;
+  align-items: center;
+}
+
+.content{
+  display: flex;
+}
+
+.left-content{
+  width: 250px;
+  text-align: center;
+}
+
+.duty-btn{
+  margin: 10px;
+  padding: 10px;
+  background-color: lightblue;
+}
+
+.duty-group{
+  margin: 10px;
+}
+
+.right-content{
+  border: 1px black solid;
+  width: calc(100vw - 250px);
+  height: 500px;
+}
+
 table,td,th{
   border: 2px black solid;
 }
 
-.name{
-  width: 70px;
+.roster-name{
+  width: 100px;
 }
 
 .check{
   text-align: center;
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+}
+
+.copyright{
+  height: 50px;
 }
