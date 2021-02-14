@@ -15,6 +15,11 @@ class DutiesController < ApplicationController
     end
   end
 
+  def show
+    @duty = Duty.find(params[:id])
+    @dutys = DutyUser.where(duty_id: @duty.id)
+  end
+
   private
   def duty_params
     params.require(:duty).permit(:name, user_ids: [])
