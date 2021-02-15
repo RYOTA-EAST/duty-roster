@@ -1,4 +1,5 @@
 class DutiesController < ApplicationController
+  before_action :move_to_login, only: [:new, :create, :show]
   def index
     @user = User.all
     @duty = Duty.all
@@ -23,5 +24,8 @@ class DutiesController < ApplicationController
   private
   def duty_params
     params.require(:duty).permit(:name, user_ids: [])
+  end
+  def move_to_login
+    authenticate_user!
   end
 end
