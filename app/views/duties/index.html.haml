@@ -1,3 +1,4 @@
+-# ヘッダー表示
 = render 'shared/header' 
 
 %body 
@@ -5,70 +6,23 @@
   .left-content
     %a.duty-btn{ :href => new_duty_path }当番表作成
     %ul.duty-group
-      - @duty.each do |duty|
+      - @dutyall.each do |duty|
         %li.duty-list
           %a{ :href => duty_path(duty.id) }= duty.name
   .main-content
-    %div.roster
-      %p ホスト役
-      %table.roster 
-        %tr 
-          %th 日付
-          - @user.each do |user|
-            %th.roster-name
-              = user.nickname
-        %tr
-          %td test/each
-          - @user.count.times do
-            %td.check
-              %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
-        %tr 
-          %td 2021/2/16
-          %td ○
-          %td 
-          %td 
-          %td 
-        %tr 
-          %td 2021/2/15
-          %td 
-          %td 
-          %td ○
-          %td 
-        %tr 
-          %td 2021/2/14
-          %td 
-          %td ○
-          %td 
-          %td 
-        %tr 
-          %td 2021/2/13
-          %td 
-          %td ◎
-          %td 
-          %td 
-        %tr 
-          %td 2021/2/12
-          %td 
-          %td 
-          %td 
-          %td ○
-        %tr 
-          %td 2021/2/11
-          %td ○
-          %td 
-          %td 
-          %td 
-        %tr 
-          %td 2021/2/10
-          %td 
-          %td 
-          %td 
-          %td ○
-        %tr 
-          %td 2021/2/9
-          %td 
-          %td 
-          %td ○
-          %td 
+    - case action_name
+      - when "index"
+        %p トップページ
+        = render 'shared/main'
+      - when "show"
+        %p 詳細表示
+        = render 'shared/show'
+      - when "new"
+        %p 新規作成
+        = render 'shared/new', dutynew: @dutynew
+      - else
+        %p 例外のアクションです
+        = action_name
 
+-# フッター表示
 = render 'shared/footer' 
