@@ -11,7 +11,7 @@
 ### Association
 - has_many :duty_users
 - has_many :duties, through: :duty_users
-- belongs_to :check
+- belongs_to :roster
 
 ## dutyテーブル
 
@@ -22,6 +22,7 @@
 ### Association
 - has_many :duty_users
 - has_many :users, through: :duty_users
+- has_many :roster
 
 ## duty-userテーブル
 
@@ -34,22 +35,14 @@
 - belongs_to :duty
 - belongs_to :user
 
-## checkテーブル
+## rosterテーブル
 
-| Column              | Type      | Options       |
-| ------------------- | --------- | ------------- |
-| date                | date      | null:false    |
-
-### Association
-- has_many :duties, through: :duty_check
-
-## duty-checkテーブル
-
-| Column     | Type         | Options                      |
-| ---------- | ------------ | ---------------------------- |
-| duty       | reference    | null:false,foreign_key:true  |
-| check      | reference    | null:false,foreign_key:true  |
+| Column    | Type         | Options                      |
+| --------- | ------------ | ---------------------------- |
+| date      | date         | null:false                   |
+| duty      | reference    | null:false,foreign_key:true  |
+| user      | reference    | null:false,foreign_key:true  |
 
 ### Association
 - belongs_to :duty
-- belongs_to :check
+- belongs_to :user
