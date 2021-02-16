@@ -1,13 +1,10 @@
-= render 'shared/header' 
-
 %div.duty-form
   %h1 新規当番表
-  = form_with model: @duty, local: true do |f|
-    = f.label :当番表名, class: 'chat-room-form__label'
-    = f.text_field :name, class: 'chat__room_name chat-room-form__input', placeholder: '当番表名を入力してください'
+  = form_with model: dutynew, local: true do |f|
+    = f.label :当番表名, class: 'duty-label'
+    = f.text_field :name, class: 'duty_name_input', placeholder: '当番表名を入力してください'
     = collection_check_boxes :duty, :user_ids, User.where.not(id: current_user.id), :id, :nickname do |user|
       = user.label { user.check_box + user.text }
     %input{:name => "duty[user_ids][]", :type => "hidden", :value => current_user.id}
 
     = f.submit
-= render 'shared/footer' 

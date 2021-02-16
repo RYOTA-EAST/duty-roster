@@ -57,10 +57,15 @@ div.title{
   margin: 10px;
 }
 
-.right-content{
-  border: 1px black solid;
+.main-content{
+  border-top: 3px solid lightskyblue;
+  border-left: 3px solid lightskyblue;
   width: calc(100vw - 250px);
   height: 500px;
+}
+
+.roster{
+  margin: 20px 0 0 20px;
 }
 
 table,td,th{

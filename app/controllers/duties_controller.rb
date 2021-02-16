@@ -1,14 +1,19 @@
 class DutiesController < ApplicationController
+  before_action :move_to_login, only: [:new, :create, :show]
+  before_action :duty_all, only: [:index, :new, :create, :show]
+  
   def index
     @user = User.all
-    @duty = Duty.all
   end
+
   def new
-    @duty = Duty.new
+    @dutynew = Duty.new
+    render "index"
   end
+
   def create
-    @duty = Duty.new(duty_params)
-    if @duty.save
+    @dutynew = Duty.new(duty_params)
+    if @dutynew.save
       redirect_to root_path
     else
       render :new
@@ -16,12 +21,22 @@ class DutiesController < ApplicationController
   end
 
   def show
-    @duty = Duty.find(params[:id])
-    @dutys = DutyUser.where(duty_id: @duty.id)
+    @dutyfind = Duty.find(params[:id])
+    @dutys = DutyUser.where(duty_id: @dutyfind.id)
+    render "index"
   end
 
   private
   def duty_params
     params.require(:duty).permit(:name, user_ids: [])
   end
+
+  def move_to_login
+    authenticate_user!
+  end
+
+  def duty_all
+    @dutyall = Duty.all
+  end
+
 end
