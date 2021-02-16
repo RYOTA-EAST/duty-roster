@@ -1,6 +1,7 @@
 .roster
   %p 
     = @dutyfind.name
+    = link_to '削除', duty_path, method: :delete, class: "TK"
 
   %table.roster-table
     %tr 
