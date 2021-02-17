@@ -4,7 +4,8 @@
 %body 
 .content
   .left-content
-    %a.duty-btn{ :href => new_duty_path }当番表作成
+    .duty-btn
+      = link_to '当番表作成', new_duty_path
     %ul.duty-group
       - @dutyall.each do |duty|
         %li.duty-list
