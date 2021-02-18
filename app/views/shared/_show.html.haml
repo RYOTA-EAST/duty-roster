@@ -1,8 +1,12 @@
 .roster
-  %p 
-    = @dutyfind.name
-    .duty-btn
-      = link_to '削除', duty_path, method: :delete
+  .roster-top
+    %p 
+      当番表名：
+      = @dutyfind.name
+      .duty-btn
+        = link_to '編集', edit_duty_path
+      .duty-btn
+        = link_to '削除', duty_path, method: :delete
 
   %table.roster-table
     %tr 
