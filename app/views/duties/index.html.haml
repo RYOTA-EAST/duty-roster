@@ -21,6 +21,9 @@
       - when "new"
         %p 新規作成
         = render 'shared/new', dutynew: @dutynew
+      - when "edit"
+        %p 編集
+        = render 'shared/edit', dutyfind: @dutyfind
       - else
         %p 例外のアクションです
         = action_name

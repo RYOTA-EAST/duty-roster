@@ -1,7 +1,7 @@
 class DutiesController < ApplicationController
   before_action :move_to_login, only: [:new, :create, :show]
-  before_action :duty_all, only: [:index, :new, :create, :show]
-  before_action :duty_find, only: [:show, :destroy]
+  before_action :duty_all, only: [:index, :new, :create, :show, :edit]
+  before_action :duty_find, only: [:show, :edit, :update, :destroy]
   
   def index
     @user = User.all
@@ -24,6 +24,19 @@ class DutiesController < ApplicationController
   def show
     @dutys = DutyUser.where(duty_id: @dutyfind.id)
     render "index"
+  end
+
+  def edit
+    @dutys = DutyUser.where(duty_id: @dutyfind.id)
+    render "index"
+  end
+
+  def update
+    if @dutyfind.update(duty_params)
+      redirect_to duty_path
+    else
+      render :edit 
+    end
   end
 
   def destroy
