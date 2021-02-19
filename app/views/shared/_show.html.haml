@@ -14,8 +14,11 @@
       - @dutys.each do |dutys|
         %th.roster-name
           = dutys.user.nickname
-    %tr
-      %td test/each
-      - @dutys.count.times do
-        %td.check
-          %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
+    - 10.times do |i|
+      %tr
+        %td
+          = (@today + 5 - i).strftime('%Y/%m/%d')
+          -# =I18n.l (@today + 5 - i), format: :long
+        - @dutys.count.times do
+          %td.check
+            %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
