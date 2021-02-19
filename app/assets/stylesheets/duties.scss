@@ -1,7 +1,7 @@
 header{
   display: flex;
   justify-content: space-between;
-  height: 100px;
+  height: 10vh;
 }
 
 .user-name{
@@ -16,7 +16,8 @@ header{
 div.title{
   display: flex;
   align-items: center;
-  width: 250px;
+  justify-content: space-evenly;
+  width: 350px;
   background-color: lightblue;
 }
 
@@ -43,8 +44,9 @@ div.title{
 }
 
 .left-content{
-  width: 250px;
+  width: 350px;
   text-align: center;
+  height: calc(100vh - 15vh);
 }
 
 .duty-btn{
@@ -59,10 +61,11 @@ div.title{
 }
 
 .main-content{
+  box-sizing: border-box;
   border-top: 3px solid lightskyblue;
   border-left: 3px solid lightskyblue;
-  width: calc(100vw - 250px);
-  height: 500px;
+  width: calc(100vw - 350px);
+  height: calc(100vh - 15vh);
 }
 
 .roster{
@@ -94,7 +97,7 @@ footer{
 }
 
 .copyright{
-  height: 50px;
+  height: 5vh;
 }
 
 .dutyform{
