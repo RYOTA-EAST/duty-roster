@@ -1,17 +1,29 @@
 %header 
-  %div.title
-    %a.title-ja{ :href => root_path } 当番表
+  .title
+    %a.title-ja{ :href => root_path } 当 番 表
     %p.title-en duty roster
-    %p.title.duty 
+  .right-up-content
+    .show-content
+      - case action_name
+        - when "show"
+          .duty-name
+            %p
+              当番表名：
+              = @dutyfind.name
+          .duty-btns
+            .duty-btn
+              = link_to '編集', edit_duty_path
+            .duty-btn
+              = link_to '削除', duty_path, method: :delete
 
-  %div.login
-    - if user_signed_in?
-      .user-name
-        = "ユーザー名：#{current_user.nickname}"
-      .user-btn
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-    - else
-      .user-btn
-        = link_to "ログイン", new_user_session_path, class: "post"
-      .user-btn
-        = link_to "新規登録", new_user_registration_path, class: "post"
+    .login
+      - if user_signed_in?
+        .user-name
+          = "ユーザー名：#{current_user.nickname}"
+        .user-btn
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
+      - else
+        .user-btn
+          = link_to "ログイン", new_user_session_path, class: "post"
+        .user-btn
+          = link_to "新規登録", new_user_registration_path, class: "post"

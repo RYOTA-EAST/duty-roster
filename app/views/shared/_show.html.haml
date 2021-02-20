@@ -1,14 +1,7 @@
 .roster
   .roster-top
-    %p 
-      当番表名：
-      = @dutyfind.name
-      .duty-btn
-        = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
-      .duty-btn
-        = link_to '編集', edit_duty_path
-      .duty-btn
-        = link_to '削除', duty_path, method: :delete
+    .duty-btn
+      = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
 
   %table.roster-table
     %tr 
