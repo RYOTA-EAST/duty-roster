@@ -1,0 +1,16 @@
+= render 'shared/header' 
+
+%h1 roster new
+= form_with model: [@duty, @roster], local: true do |f|
+  .dutyform
+  = f.label :日付, class: 'roster-date-label'
+  .dutyform
+  = f.date_field :date, class: 'roster-date-input', placeholder: '日付を入力して下さい'
+  .dutyform
+  = f.label :メンバー, class: 'roster-rabel'
+  .dutyform
+  = f.collection_select :user_id, User.all, :id, :nickname
+  .dutyform
+  = f.submit
+
+= render 'shared/footer' 
