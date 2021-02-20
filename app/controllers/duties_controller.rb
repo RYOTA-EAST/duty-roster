@@ -1,6 +1,6 @@
 class DutiesController < ApplicationController
   before_action :move_to_login, only: [:new, :create, :show]
-  before_action :duty_all, only: [:index, :new, :create, :show, :edit]
+  before_action :set_parameter, only: [:index, :new, :create, :show, :edit]
   before_action :duty_find, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -56,8 +56,9 @@ class DutiesController < ApplicationController
     authenticate_user!
   end
 
-  def duty_all
+  def set_parameter
     @dutyall = Duty.all
+    @today = Date.current
   end
 
   def duty_find
