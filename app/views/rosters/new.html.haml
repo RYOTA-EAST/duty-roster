@@ -9,7 +9,7 @@
   .dutyform
   = f.label :メンバー, class: 'roster-rabel'
   .dutyform
-  = f.collection_select :user_id, User.all, :id, :nickname
+  = f.collection_select :user_id, User.find(DutyUser.where(duty_id:params[:duty_id]).pluck(:user_id)), :id, :nickname
   .dutyform
   = f.submit
 
