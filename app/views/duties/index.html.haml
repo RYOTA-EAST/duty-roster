@@ -17,7 +17,7 @@
         = render 'shared/main'
       - when "show"
         %p 詳細表示
-        = render 'shared/show'
+        = render 'shared/show', roster: @roster
       - when "new"
         %p 新規作成
         = render 'shared/new', dutynew: @dutynew

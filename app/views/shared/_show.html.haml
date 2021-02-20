@@ -20,6 +20,8 @@
       %tr
         %td
           = (@today + 5 - i).strftime('%Y/%m/%d')
-        - @dutys.count.times do
-          %td.check
-            %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
+          - @dutys.each do |dutys|
+            %td.check
+              - @roster.each do |roster|
+                - if (@today + 5 - i) == roster.date && dutys.user_id == roster.user_id
+                  %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○

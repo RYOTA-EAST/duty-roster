@@ -23,6 +23,7 @@ class DutiesController < ApplicationController
 
   def show
     @dutys = DutyUser.where(duty_id: @dutyfind.id)
+    @roster = Roster.where(duty_id: @dutyfind.id)
     render "index"
   end
 
