@@ -24,4 +24,4 @@
             %td.check
               - @roster.each do |roster|
                 - if (@today + 5 - i) == roster.date && dutys.user_id == roster.user_id
-                  %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
+                  = link_to '○', duty_roster_path(@dutyfind, roster), method: :delete
