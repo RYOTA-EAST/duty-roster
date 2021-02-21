@@ -1,6 +1,5 @@
 header{
   display: flex;
-  justify-content: space-between;
   height: 10vh;
 }
 
@@ -17,7 +16,7 @@ div.title{
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 350px;
+  width: 270px;
   background-color: lightblue;
 }
 
@@ -34,9 +33,35 @@ div.title{
   padding: 10px;
 }
 
+.right-up-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100vw - 270px);
+}
+
+.show-content{
+  display: flex;
+  align-items: center;
+}
+
+.duty-name{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.duty-btns{
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+
 .login{
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  width: 300px;
 }
 
 .content{
@@ -44,7 +69,7 @@ div.title{
 }
 
 .left-content{
-  width: 350px;
+  width: 270px;
   text-align: center;
   height: calc(100vh - 15vh);
 }
@@ -53,6 +78,15 @@ div.title{
   margin: 10px;
   padding: 10px;
   width: 100px;
+  text-align: center;
+  background-color: lightblue;
+}
+
+.duty-new-btn{
+  margin: 10px auto;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
   background-color: lightblue;
 }
 
@@ -64,7 +98,7 @@ div.title{
   box-sizing: border-box;
   border-top: 3px solid lightskyblue;
   border-left: 3px solid lightskyblue;
-  width: calc(100vw - 350px);
+  width: calc(100vw - 270px);
   height: calc(100vh - 15vh);
 }
 
@@ -79,14 +113,14 @@ div.title{
 
 table,td,th{
   border: 2px black solid;
+  text-align: center;
 }
 
 .roster-name{
-  width: 100px;
+  width: 75px;
 }
 
 .check{
-  text-align: center;
 }
 
 footer{

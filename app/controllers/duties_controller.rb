@@ -22,7 +22,7 @@ class DutiesController < ApplicationController
   end
 
   def show
-    @dutys = DutyUser.where(duty_id: @dutyfind.id)
+    @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
     @roster = Roster.where(duty_id: @dutyfind.id)
     render "index"
   end

@@ -4,7 +4,7 @@
 %body 
 .content
   .left-content
-    .duty-btn
+    .duty-new-btn
       = link_to '当番表作成', new_duty_path
     %ul.duty-group
       - @dutyall.each do |duty|
@@ -13,16 +13,12 @@
   .main-content
     - case action_name
       - when "index"
-        %p トップページ
         = render 'shared/main'
       - when "show"
-        %p 詳細表示
         = render 'shared/show', roster: @roster
       - when "new"
-        %p 新規作成
         = render 'shared/new', dutynew: @dutynew
       - when "edit"
-        %p 編集
         = render 'shared/edit', dutyfind: @dutyfind
       - else
         %p 例外のアクションです
