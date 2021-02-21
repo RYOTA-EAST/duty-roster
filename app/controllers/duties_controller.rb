@@ -2,14 +2,14 @@ class DutiesController < ApplicationController
   before_action :move_to_login, only: [:new, :create, :show]
   before_action :set_parameter, only: [:index, :new, :create, :show, :edit]
   before_action :duty_find, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @user = User.all
   end
 
   def new
     @dutynew = Duty.new
-    render "index"
+    render 'index'
   end
 
   def create
@@ -24,19 +24,19 @@ class DutiesController < ApplicationController
   def show
     @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
     @roster = Roster.where(duty_id: @dutyfind.id)
-    render "index"
+    render 'index'
   end
 
   def edit
     @dutys = DutyUser.where(duty_id: @dutyfind.id)
-    render "index"
+    render 'index'
   end
 
   def update
     if @dutyfind.update(duty_params)
       redirect_to duty_path
     else
-      render :edit 
+      render :edit
     end
   end
 
@@ -49,6 +49,7 @@ class DutiesController < ApplicationController
   end
 
   private
+
   def duty_params
     params.require(:duty).permit(:name, user_ids: [])
   end
@@ -65,5 +66,4 @@ class DutiesController < ApplicationController
   def duty_find
     @dutyfind = Duty.find(params[:id])
   end
-
 end
