@@ -1,16 +1,18 @@
+= javascript_include_tag "reload"
+
 = render 'shared/header' 
 
 %h1 roster new
-= form_with model: [@duty, @roster], local: true do |f|
+= form_with model: [@duty, @roster], id: 'check-form', local: true do |f|
   .dutyform
-  = f.label :日付, class: 'roster-date-label'
+    = f.label :日付, class: 'roster-date-label'
   .dutyform
-  = f.date_field :date, class: 'roster-date-input', placeholder: '日付を入力して下さい'
+    = f.date_field :date, class: 'roster-date-input', placeholder: '日付を入力して下さい'
   .dutyform
-  = f.label :メンバー, class: 'roster-rabel'
+    = f.label :メンバー, class: 'roster-rabel'
   .dutyform
-  = f.collection_select :user_id, User.find(DutyUser.where(duty_id:params[:duty_id]).pluck(:user_id)), :id, :nickname
+    = f.collection_select :user_id, User.find(DutyUser.where(duty_id:params[:duty_id]).pluck(:user_id)), :id, :nickname
   .dutyform
-  = f.submit
+    = f.submit
 
 = render 'shared/footer' 

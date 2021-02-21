@@ -8,7 +8,7 @@ class RostersController < ApplicationController
   def create
     @roster = @duty.rosters.new(roster_params)
     if @roster.save
-      redirect_to duty_path(params[:duty_id])
+      redirect_to duty_path(params[:duty_id]), layout: false
     else
       render :new
     end

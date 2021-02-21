@@ -1,7 +1,8 @@
 .roster
   .roster-top
     .duty-btn
-      = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
+      = link_to 'チェック', new_duty_roster_path(@dutyfind.id), :onclick=>"window.open(this.href,'チェック', 'height=400, width=800');return false;"
+    %ul.duty-group
 
   %table.roster-table
     %tr 
