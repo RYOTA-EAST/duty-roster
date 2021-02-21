@@ -11,11 +11,11 @@
         %th.roster-name
           = dutys.user.nickname
     - 10.times do |i|
-      %tr
+      %tr{id: "#{@today + 5 - i}"}
         %td
           = (@today + 5 - i).strftime('%Y/%m/%d')
           - @dutys.each do |dutys|
-            %td.check
+            %td{id: "#{dutys.user_id}"}
               - @roster.each do |roster|
                 - if (@today + 5 - i) == roster.date && dutys.user_id == roster.user_id
                   = link_to '○', duty_roster_path(@dutyfind, roster), method: :delete
