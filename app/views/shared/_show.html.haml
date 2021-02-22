@@ -1,10 +1,12 @@
+= javascript_include_tag "check"
+
 .roster
   .roster-top
     .duty-btn
       = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
     %ul.duty-group
 
-  %table.roster-table
+  %table#roster-table
     %tr 
       %th 日付
       - @dutys.each do |dutys|
@@ -15,7 +17,7 @@
         %td
           = (@today + 5 - i).strftime('%Y/%m/%d')
           - @dutys.each do |dutys|
-            %td{id: "#{dutys.user_id}"}
+            %td{class: "#{dutys.user_id}"}
               - @roster.each do |roster|
                 - if (@today + 5 - i) == roster.date && dutys.user_id == roster.user_id
                   = link_to '○', duty_roster_path(@dutyfind, roster), method: :delete
