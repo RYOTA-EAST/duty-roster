@@ -12,6 +12,7 @@
       - @dutys.each do |dutys|
         %th.roster-name
           = dutys.user.nickname
+          = dutys.user_id
     - 10.times do |i|
       %tr{id: "#{@today + 5 - i}"}
         %td

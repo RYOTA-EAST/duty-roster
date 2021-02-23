@@ -1,19 +1,24 @@
 window.addEventListener('load', function(){
-  const tables = document.getElementsByTagName ("tr")
-  console.log(tables)
-    for( var i=0,l=tables.length; l>i; i++ ) {
-      var table = tables[i] ;
-      table.addEventListener('click', function(){
+  const rows = document.getElementsByTagName ("tr")
+  const checks = document.getElementsByTagName ("td")
+  const duty = location.pathname.replace(/[^-^0-9^\.]/g,"")
+  console.log(location)
+  console.log(duty)
+  console.log(rows)
+    for( var i=0,l=rows.length; l>i; i++ ) {
+      var row = rows[i] ;
+      row.addEventListener('dblclick', function(){
       console.log(this.id)
+      localStorage.getItem('date', this.id)
     })
-    }
-  const tables2 = document.getElementsByTagName ("td")
-  console.log(tables2)
-    for( var i=0,l=tables2.length; l>i; i++ ) {
-      var table = tables2[i] ;
-      table.addEventListener('click', function(){
+  }
+  console.log(checks)
+    for( var i=0,l=checks.length; l>i; i++ ) {
+      var check = checks[i] ;
+      check.addEventListener('dblclick', function(){
       console.log(this.className)
+      localStorage.setItem('user', this.className)
+      // window.location.href = '/duties/' + duty + '/rosters/new'
     })
-    }
-  
+  }
 })

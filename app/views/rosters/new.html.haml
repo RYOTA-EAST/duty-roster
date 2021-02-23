@@ -1,5 +1,3 @@
-= render 'shared/header' 
-
 %h1 roster new
 = form_with model: [@duty, @roster], id: 'check-form', local: true do |f|
   .dutyform
@@ -12,5 +10,3 @@
     = f.collection_select :user_id, User.find(DutyUser.where(duty_id:params[:duty_id]).pluck(:user_id)), :id, :nickname
   .dutyform
     = f.submit
-
-= render 'shared/footer' 
