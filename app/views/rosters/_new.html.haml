@@ -1,12 +1,9 @@
-%h1 roster new
-= form_with model: [@duty, @roster], id: 'check-form', local: true do |f|
-  .dutyform
+= form_with model: [@dutyfind, @rosternew], id: 'check-form', local: true do |f|
+  .rosterform
     = f.label :日付, class: 'roster-date-label'
-  .dutyform
     = f.date_field :date, class: 'roster-date-input', placeholder: '日付を入力して下さい'
-  .dutyform
+  .rosterform
     = f.label :メンバー, class: 'roster-rabel'
-  .dutyform
     = f.collection_select :user_id, User.find(DutyUser.where(duty_id:params[:duty_id]).pluck(:user_id)), :id, :nickname
-  .dutyform
+  .rosterform
     = f.submit

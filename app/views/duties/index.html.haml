@@ -17,7 +17,11 @@
       - when "show"
         = render 'shared/show', roster: @roster
       - when "new"
-        = render 'shared/new', dutynew: @dutynew
+        - case controller_name
+          - when "duties"
+            = render 'shared/new', dutynew: @dutynew
+          - when "rosters"
+            = render 'shared/show', roster: @roster
       - when "edit"
         = render 'shared/edit', dutyfind: @dutyfind
       - else

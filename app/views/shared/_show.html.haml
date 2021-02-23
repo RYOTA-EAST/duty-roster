@@ -2,8 +2,13 @@
 
 .roster
   .roster-top
-    .duty-btn
-      = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
+    - case action_name
+      - when "new"
+        = render 'rosters/new'
+      - else
+        .duty-btn
+          = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
+
     %ul.duty-group
 
   %table#roster-table
@@ -12,8 +17,7 @@
       - @dutys.each do |dutys|
         %th.roster-name
           = dutys.user.nickname
-          = dutys.user_id
-    - 10.times do |i|
+    - 15.times do |i|
       %tr{id: "#{@today + 5 - i}"}
         %td
           = (@today + 5 - i).strftime('%Y/%m/%d')

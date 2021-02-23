@@ -28,7 +28,7 @@ class DutiesController < ApplicationController
   end
 
   def edit
-    @dutys = DutyUser.where(duty_id: @dutyfind.id)
+    @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
     render 'index'
   end
 
