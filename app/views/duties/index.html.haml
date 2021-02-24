@@ -1,5 +1,5 @@
 -# ヘッダー表示
-= render 'shared/header' 
+= render 'shared/header' ,dutyfind: @dutyfind
 
 %body 
 .content
@@ -22,6 +22,10 @@
             = render 'shared/new', dutynew: @dutynew
           - when "rosters"
             = render 'shared/show', roster: @roster
+      - when "update"
+        = render 'shared/edit', dutyfind: @dutyfind
+      - when "create"
+        = render 'shared/show', rosternew: @rosternew
       - when "edit"
         = render 'shared/edit', dutyfind: @dutyfind
       - else

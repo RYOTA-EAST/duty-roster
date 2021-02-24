@@ -1,5 +1,5 @@
 .form
-  = form_with model: dutyfind, local: true do |f|
+  = form_with model: @dutyfind, local: true do |f|
     .dutyform
       = f.label :当番表名, class: 'duty-label'
       = f.text_field :name, class: 'duty_name_input', placeholder: '当番表名を入力してください'

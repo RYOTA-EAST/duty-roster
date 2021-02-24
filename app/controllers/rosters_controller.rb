@@ -1,20 +1,21 @@
 class RostersController < ApplicationController
   before_action :set_duty, only: [:new, :create, :destroy]
+  before_action :set_parameter, only: [:new, :create]
 
   def new
-    @roster = Roster.where(duty_id: @dutyfind.id)
     @rosternew = Roster.new
-    @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
-    @today = Date.current
     render template: 'duties/index'
   end
 
   def create
-    @roster = @dutyfind.rosters.new(roster_params)
-    if @roster.save
-      redirect_to duty_path(params[:duty_id]), layout: false
+    @rosternew = @dutyfind.rosters.new(roster_params)
+    if @rosternew.save
+      redirect_to duty_path(params[:duty_id])
     else
-      render :new
+    @roster = Roster.where(duty_id: @dutyfind.id)
+    # @rosternew = Roster.new
+    # binding.pry
+    render template: 'duties/index'
     end
   end
 
@@ -36,5 +37,11 @@ class RostersController < ApplicationController
   def set_duty
     @dutyall = Duty.all
     @dutyfind = Duty.find(params[:duty_id])
+  end
+  def set_parameter
+    @dutyfind = Duty.find(params[:duty_id])
+    @roster = Roster.where(duty_id: @dutyfind.id)
+    @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
+    @today = Date.current
   end
 end

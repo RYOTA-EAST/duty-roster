@@ -36,7 +36,8 @@ class DutiesController < ApplicationController
     if @dutyfind.update(duty_params)
       redirect_to duty_path
     else
-      render :edit
+      @dutyall = Duty.all
+      render :index
     end
   end
 
