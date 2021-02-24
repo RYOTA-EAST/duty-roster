@@ -1,24 +1,23 @@
 window.addEventListener('load', function(){
-  const rows = document.getElementsByTagName ("tr")
-  const checks = document.getElementsByTagName ("td")
-  const duty = location.pathname.replace(/[^-^0-9^\.]/g,"")
-  // console.log(location)
-  console.log(duty)
-  // console.log(rows)
-    for( var i=0,l=rows.length; l>i; i++ ) {
-      var row = rows[i] ;
-      row.addEventListener('dblclick', function(){
-      console.log(this.id)
-      // localStorage.getItem('date', this.id)
+  // 表要素取得
+  const days = document.getElementsByTagName ("tr")
+  const users = document.getElementsByTagName ("td")
+  // 日付取得
+  for( var i=0,l=days.length; l>i; i++ ) {
+    var day = days[i] ;
+    day.addEventListener('click', function(){
+      document.getElementById('roster_date').value = this.id
     })
   }
-  // console.log(checks)
-    for( var i=0,l=checks.length; l>i; i++ ) {
-      var check = checks[i] ;
-      check.addEventListener('dblclick', function(){
-      console.log(this.className)
-      // localStorage.setItem('user', this.className)
-      // window.location.href = '/duties/' + duty + '/rosters/new'
+  // user_id取得
+  for( var i=0,l=users.length; l>i; i++ ) {
+    var user = users[i] ;
+    user.addEventListener('click', function(){
+      for( var i=0,l=users.length; l>i; i++ ) {
+        users[i].style.background = 'white'
+      }
+      document.getElementById('roster_user_id').value = this.className
+      this.style.backgroundColor = 'red'
     })
   }
 })
