@@ -1,41 +1,16 @@
+%h1 当番表アプリ[duty roster]
+
+%p 当番表を作成するアプリです
+%p 
 
 %div.roster
-%p ホスト役(これは実際のホスト役を表示しているだけです)
+%p (sample)ホスト役
 %table.roster-table
   %tr 
     %th 日付
     - @user.each do |user|
       %th.roster-name
         = user.nickname
-  %tr
-    %td test/each
-    - @user.count.times do
-      %td.check
-        %a{ :href => 'http://google.co.jp', :id => 'anchor1' }○
-  %tr 
-    %td 2021/2/24
-    %td 
-    %td 
-    %td 
-    %td 
-  %tr 
-    %td 2021/2/23
-    %td 
-    %td 
-    %td 
-    %td 
-  %tr 
-    %td 2021/2/22
-    %td 
-    %td 
-    %td 
-    %td 
-  %tr 
-    %td 2021/2/21
-    %td 
-    %td 
-    %td 
-    %td 
   %tr 
     %td 2021/2/20
     %td 
@@ -82,35 +57,5 @@
     %td 2021/2/13
     %td 
     %td ◎
-    %td 
-    %td 
-  %tr 
-    %td 2021/2/12
-    %td 
-    %td 
-    %td 
-    %td ○
-  %tr 
-    %td 2021/2/11
-    %td ○
-    %td 
-    %td 
-    %td 
-  %tr 
-    %td 2021/2/10
-    %td 
-    %td 
-    %td 
-    %td ○
-  %tr 
-    %td 2021/2/9
-    %td 
-    %td 
-    %td ○
-    %td 
-  %tr 
-    %td 2021/2/8
-    %td 
-    %td ○
     %td 
     %td 
