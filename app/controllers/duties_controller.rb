@@ -1,6 +1,6 @@
 class DutiesController < ApplicationController
   before_action :move_to_login, only: [:new, :create, :show]
-  before_action :set_parameter, only: [:index, :new, :create, :show, :edit]
+  before_action :set_parameters, only: [:index, :new, :create, :show, :edit]
   before_action :duty_find, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -28,7 +28,7 @@ class DutiesController < ApplicationController
   end
 
   def edit
-    @dutys = DutyUser.where(duty_id: @dutyfind.id)
+    @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
     render 'index'
   end
 
@@ -36,7 +36,8 @@ class DutiesController < ApplicationController
     if @dutyfind.update(duty_params)
       redirect_to duty_path
     else
-      render :edit
+      @dutyall = Duty.all
+      render :index
     end
   end
 
@@ -58,7 +59,7 @@ class DutiesController < ApplicationController
     authenticate_user!
   end
 
-  def set_parameter
+  def set_parameters
     @dutyall = Duty.all
     @today = Date.current
   end

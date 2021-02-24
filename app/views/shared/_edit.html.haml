@@ -1,14 +1,12 @@
-%div
+.form
   = form_with model: @dutyfind, local: true do |f|
     .dutyform
-    = f.label :当番表名, class: 'duty-label'
+      = f.label :当番表名, class: 'duty-label'
+      = f.text_field :name, class: 'duty_name_input', placeholder: '当番表名を入力してください'
     .dutyform
-    = f.text_field :name, class: 'duty_name_input', placeholder: '当番表名を入力してください'
-    .dutyform
-    = f.label :メンバー, class: 'duty-label'
-    .dutyform
-    = collection_check_boxes :duty, :user_ids, User.where.not(id: current_user.id), :id, :nickname do |user|
-      = user.label { user.check_box + user.text }
+      = f.label :メンバー, class: 'duty-label'
+      = collection_check_boxes :duty, :user_ids, User.where.not(id: current_user.id), :id, :nickname do |user|
+        = user.label { user.check_box + user.text }
     %input{:name => "duty[user_ids][]", :type => "hidden", :value => current_user.id}
     .dutyform
     = f.submit

@@ -1,0 +1,12 @@
+= javascript_include_tag "check"
+
+= form_with model: [@dutyfind, @rosternew], id: 'check-form', local: true do |f|
+  .roster-forms
+    .roster-form
+      = f.label :日付, class: 'roster-label'
+      = f.date_field :date, class: 'roster-date-input', placeholder: '日付を入力して下さい'
+    .roster-form
+      = f.label :メンバー, class: 'roster-label'
+      = f.collection_select(:user_id, User.find(DutyUser.where(duty_id:params[:duty_id]).pluck(:user_id)), :id, :nickname, {prompt: ""}, {class: "roster-menber-input"}) 
+    .roster-form
+      = f.submit "check"
