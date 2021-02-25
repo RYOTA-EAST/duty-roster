@@ -7,10 +7,9 @@
       - when "create"
         = render 'rosters/new', rosternew: @rosternew
       - else
-        .duty-btn
-          = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
-
-    %ul.duty-group
+        - if user_signed_in? && @users.include?(current_user.id)
+          .duty-btn
+            = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
 
   %table#roster-table
     %tr 

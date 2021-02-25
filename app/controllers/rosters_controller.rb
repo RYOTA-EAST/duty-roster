@@ -1,4 +1,5 @@
 class RostersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
   before_action :set_parameters, only: [:new, :create, :destroy]
 
   def new
@@ -34,8 +35,8 @@ class RostersController < ApplicationController
   def set_parameters
     @dutyall = Duty.all
     @dutyfind = Duty.find(params[:duty_id])
-    @roster = Roster.where(duty_id: @dutyfind.id)
     @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
+    @roster = Roster.where(duty_id: @dutyfind.id)
     @today = Date.current
   end
 end

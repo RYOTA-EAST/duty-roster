@@ -10,11 +10,12 @@
             %p
               当番表名：
               = @dutyfind.name
-          .duty-btns
-            .duty-btn
-              = link_to '編集', edit_duty_path
-            .duty-btn
-              = link_to '削除', duty_path, method: :delete
+          - if user_signed_in? && @users.include?(current_user.id)
+            .duty-btns
+              .duty-btn
+                = link_to '編集', edit_duty_path
+              .duty-btn
+                = link_to '削除', duty_path, method: :delete
 
     .login
       - if user_signed_in?

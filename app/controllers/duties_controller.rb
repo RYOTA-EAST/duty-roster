@@ -1,7 +1,8 @@
 class DutiesController < ApplicationController
-  before_action :move_to_login, only: [:new, :create, :show]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :create]
   before_action :set_parameters, only: [:index, :new, :create, :show, :edit]
   before_action :duty_find, only: [:show, :edit, :update, :destroy]
+  before_action :move_root, only: [:edit, :update, :destroy]
 
   def index
     @user = User.all
@@ -24,6 +25,7 @@ class DutiesController < ApplicationController
   def show
     @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
     @roster = Roster.where(duty_id: @dutyfind.id)
+    @users = DutyUser.where(duty_id:@dutyfind.id).pluck(:user_id)
     render 'index'
   end
 
@@ -56,15 +58,26 @@ class DutiesController < ApplicationController
   end
 
   def move_to_login
-    authenticate_user!
+    
   end
 
   def set_parameters
-    @dutyall = Duty.all
+    if user_signed_in?
+      @dutyall = Duty.find(DutyUser.where(user_id:current_user.id).pluck(:duty_id))
+    else
+      @dutyall = Duty.all
+    end
     @today = Date.current
   end
 
   def duty_find
     @dutyfind = Duty.find(params[:id])
+  end
+
+  def move_root
+    @users = DutyUser.where(duty_id:@dutyfind.id).pluck(:user_id)
+    unless @users.include?(current_user.id)
+      redirect_to root_path
+    end
   end
 end
