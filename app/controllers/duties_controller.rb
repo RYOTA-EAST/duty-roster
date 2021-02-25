@@ -18,7 +18,7 @@ class DutiesController < ApplicationController
     if @dutynew.save
       redirect_to root_path
     else
-      render :new
+      render 'index'
     end
   end
 

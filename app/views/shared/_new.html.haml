@@ -1,5 +1,6 @@
 %div
-  = form_with model: dutynew, local: true do |f|
+  = form_with model: @dutynew, local: true do |f|
+    = render 'layouts/error_messages', model: f.object
     .dutyform
     = f.label :当番表名, class: 'duty-label'
     .dutyform
