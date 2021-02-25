@@ -1,6 +1,7 @@
 class RostersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy]
   before_action :set_parameters, only: [:new, :create, :destroy]
+  before_action :move_root, only: [:new, :create, :destroy]
 
   def new
     @rosternew = Roster.new
@@ -38,5 +39,12 @@ class RostersController < ApplicationController
     @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
     @roster = Roster.where(duty_id: @dutyfind.id)
     @today = Date.current
+  end
+
+  def move_root
+    @users = DutyUser.where(duty_id:@dutyfind.id).pluck(:user_id)
+    unless @users.include?(current_user.id)
+      redirect_to root_path
+    end
   end
 end
