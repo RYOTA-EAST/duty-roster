@@ -11,26 +11,30 @@
         %li.duty-list
           %a{ :href => duty_path(duty.id) }= duty.name
   .main-content
-    - case action_name
-      - when "index"
-        = render 'shared/main'
-      - when "show"
-        = render 'shared/show', roster: @roster
-      - when "new"
-        - case controller_name
-          - when "duties"
-            = render 'shared/new', dutynew: @dutynew
-          - when "rosters"
+    - case controller_name
+      - when "duties"
+        - case action_name
+          - when "index"
+            = render 'shared/main'
+          - when "show"
             = render 'shared/show', roster: @roster
-      - when "update"
-        = render 'shared/edit', dutyfind: @dutyfind
-      - when "create"
-        = render 'shared/show', rosternew: @rosternew
-      - when "edit"
-        = render 'shared/edit', dutyfind: @dutyfind
-      - else
-        %p 例外のアクションです
-        = action_name
+          - when "new"
+            = render 'shared/new', dutynew: @dutynew
+          - when "update"
+            = render 'shared/edit', dutyfind: @dutyfind
+          - when "create"
+            = render 'shared/new', rosternew: @rosternew
+          - when "edit"
+            = render 'shared/edit', dutyfind: @dutyfind
+          - else
+            %p 例外のアクションです
+            = action_name
+      - when "rosters"
+        - case action_name
+          - when "new"
+            = render 'shared/show', roster: @roster
+          - when "create"
+            = render 'shared/show', rosternew: @rosternew
 
 -# フッター表示
 = render 'shared/footer' 
