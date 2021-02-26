@@ -16,7 +16,7 @@ class DutiesController < ApplicationController
   def create
     @dutynew = Duty.new(duty_params)
     if @dutynew.save
-      redirect_to root_path
+      redirect_to duty_path(@dutynew.id)
     else
       render 'index'
     end
