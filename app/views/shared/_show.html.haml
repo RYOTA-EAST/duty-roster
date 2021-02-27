@@ -12,17 +12,19 @@
             = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
 
   %table#roster-table
-    %tr 
-      %th 日付
-      - @dutys.each do |dutys|
-        %th.roster-name
-          = dutys.user.nickname
-    - 20.times do |i|
-      %tr{id: "#{@today + 5 - i}"}
-        %td
-          = (@today + 5 - i).strftime('%Y/%m/%d')
-          - @dutys.each do |dutys|
-            %td{class: "#{dutys.user_id}"}
-              - @roster.each do |roster|
-                - if (@today + 5 - i) == roster.date && dutys.user_id == roster.user_id
-                  = link_to '○', duty_roster_path(@dutyfind, roster), method: :delete
+    %thead
+      %tr 
+        %th 日付
+        - @dutys.each do |dutys|
+          %th.roster-name
+            = dutys.user.nickname
+    %tbody
+      - 20.times do |i|
+        %tr{id: "#{@today + 5 - i}"}
+          %td
+            = (@today + 5 - i).strftime('%Y/%m/%d')
+            - @dutys.each do |dutys|
+              %td{class: "#{dutys.user_id}"}
+                - @roster.each do |roster|
+                  - if (@today + 5 - i) == roster.date && dutys.user_id == roster.user_id
+                    = link_to '○', duty_roster_path(@dutyfind, roster), method: :delete ,name: "check-btn"
