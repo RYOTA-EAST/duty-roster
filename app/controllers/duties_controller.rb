@@ -1,5 +1,5 @@
 class DutiesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :create, :destroy]
   before_action :set_parameters, only: [:index, :new, :create, :show, :edit]
   before_action :duty_find, only: [:show, :edit, :update, :destroy]
   before_action :move_root, only: [:edit, :update, :destroy]
@@ -16,7 +16,7 @@ class DutiesController < ApplicationController
   def create
     @dutynew = Duty.new(duty_params)
     if @dutynew.save
-      redirect_to root_path
+      redirect_to duty_path(@dutynew.id)
     else
       render 'index'
     end
@@ -38,7 +38,7 @@ class DutiesController < ApplicationController
     if @dutyfind.update(duty_params)
       redirect_to duty_path
     else
-      @dutyall = Duty.all
+      set_parameters
       render :index
     end
   end
