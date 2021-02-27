@@ -1,5 +1,5 @@
 class DutiesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :create, :destroy]
   before_action :set_parameters, only: [:index, :new, :create, :show, :edit]
   before_action :duty_find, only: [:show, :edit, :update, :destroy]
   before_action :move_root, only: [:edit, :update, :destroy]
