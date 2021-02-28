@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   }
   root to: "duties#index"
   resources :duties do
+    collection do
+      get 'mypage'
+    end
     resources :rosters, only: [:new, :create, :destroy]
   end
 end

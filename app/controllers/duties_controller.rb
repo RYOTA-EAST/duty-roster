@@ -1,6 +1,6 @@
 class DutiesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :create, :destroy]
-  before_action :set_parameters, only: [:index, :new, :create, :show, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :create, :destroy, :mypage]
+  before_action :set_parameters, only: [:index, :new, :create, :show, :edit, :mypage]
   before_action :duty_find, only: [:show, :edit, :update, :destroy]
   before_action :move_root, only: [:edit, :update, :destroy]
 
@@ -49,6 +49,11 @@ class DutiesController < ApplicationController
     else
       render :index
     end
+  end
+
+  def mypage
+    @roster = Roster.where(user_id:current_user.id)
+    render :index
   end
 
   private

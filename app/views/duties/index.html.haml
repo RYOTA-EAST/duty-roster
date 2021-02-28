@@ -26,6 +26,8 @@
             = render 'shared/new', rosternew: @rosternew
           - when "edit"
             = render 'shared/edit', dutyfind: @dutyfind
+          - when "mypage"
+            = render 'shared/mypage'
           - else
             %p 例外のアクションです
             = action_name
