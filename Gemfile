@@ -63,3 +63,6 @@ gem 'erb2haml'
 gem 'pry-rails'
 
 gem 'devise'
+
+gem 'bootstrap'
+gem 'jquery-rails'

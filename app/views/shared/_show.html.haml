@@ -14,7 +14,7 @@
   %table#roster-table
     %thead
       %tr 
-        %th 日付
+        %th.roster-date 日付
         - @dutys.each do |dutys|
           %th.roster-name
             = dutys.user.nickname

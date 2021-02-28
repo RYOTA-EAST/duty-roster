@@ -12,4 +12,4 @@
       = user.label { user.check_box + user.text }
     %input{:name => "duty[user_ids][]", :type => "hidden", :value => current_user.id}
     .dutyform
-    = f.submit
+    = f.submit "当番表作成", class: "btn btn-outline-primary"

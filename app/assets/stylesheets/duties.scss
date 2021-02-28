@@ -1,3 +1,7 @@
+body{
+  // background-color: lightyellow;
+}
+
 header{
   display: flex;
   height: 10vh;
@@ -114,6 +118,11 @@ div.title{
 table,td,th{
   border: 2px black solid;
   text-align: center;
+}
+
+
+.roster-date{
+  width: 150px;
 }
 
 .roster-name{
