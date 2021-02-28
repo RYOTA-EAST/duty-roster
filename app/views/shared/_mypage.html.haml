@@ -1,23 +1,24 @@
-%h3 Mypageへようこそ
+.roster
+  %h3 Mypageへようこそ
 
-%table#roster-table
-  %thead
-    %tr 
-      %th.roster-date 日付
-      - @dutyall.each do |dutys|
-        %th.roster-name
-          = link_to dutys.name, duty_path(dutys.id)
-  %tbody
-    - 20.times do |i|
-    - day = @today + 5 - i
-      %tr{id: "#{day}",class: "#{day.strftime('%a')}"}
-        %td
-          = day.strftime('%Y/%m/%d(%a)')
-          - if @today == day
-            = "Today"
-          
-          - @dutyall.each do |dutys|
-            %td{class: "#{dutys.id}"}
-              - @roster.each do |roster|
-                - if day == roster.date && dutys.id == roster.duty_id
-                  = '○'
+  %table#roster-table
+    %thead
+      %tr 
+        %th.roster-date 日付
+        - @dutyall.each do |dutys|
+          %th.roster-name
+            = link_to dutys.name, duty_path(dutys.id)
+    %tbody
+      - 14.times do |i|
+      - day = @today + 7 - i
+        %tr{id: "#{day}",class: "#{day.strftime('%a')}"}
+          %td
+            = day.strftime('%Y/%m/%d(%a)')
+            - if @today == day
+              = "Today"
+            
+            - @dutyall.each do |dutys|
+              %td{class: "#{dutys.id}"}
+                - @roster.each do |roster|
+                  - if day == roster.date && dutys.id == roster.duty_id
+                    = '○'

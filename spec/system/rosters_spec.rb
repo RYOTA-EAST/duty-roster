@@ -20,7 +20,7 @@ RSpec.describe "当番チェック機能", type: :system do
         # チェックページに遷移する
         visit new_duty_roster_path(@duty1.id)
         # 表をクリックする
-        date = 5 - (@roster.date - Date.current).to_i
+        date = 7 - (@roster.date - Date.current).to_i
         tds = all('tbody tr')[date].all('td')
         tds[1].click
         # # クリックしたところが赤に変化しているか確認する
