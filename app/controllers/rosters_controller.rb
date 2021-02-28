@@ -34,8 +34,8 @@ class RostersController < ApplicationController
   end
 
   def set_parameters
-    @dutyall = Duty.all
     @dutyfind = Duty.find(params[:duty_id])
+    @dutyall = Duty.find(DutyUser.where(user_id:current_user.id).pluck(:duty_id))
     @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
     @roster = Roster.where(duty_id: @dutyfind.id)
     @today = Date.current
