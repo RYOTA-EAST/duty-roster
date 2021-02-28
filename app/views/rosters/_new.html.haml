@@ -10,4 +10,4 @@
       = f.label :メンバー, class: 'roster-label'
       = f.collection_select(:user_id, User.find(DutyUser.where(duty_id:params[:duty_id]).pluck(:user_id)), :id, :nickname, {prompt: ""}, {class: "roster-menber-input"}) 
     .roster-form
-      = f.submit "check"
+      = f.submit ("check") ,class: "btn btn-outline-primary"
