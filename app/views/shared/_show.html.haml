@@ -24,10 +24,9 @@
       - day = @today + 5 - i
         %tr{id: "#{day}",class: "#{day.strftime('%a')}"}
           %td
+            = day.strftime('%Y/%m/%d(%a)')
             - if @today == day
               = "Today"
-            - else
-              = day.strftime('%Y/%m/%d(%a)')
             
             - @dutys.each do |dutys|
               %td{class: "#{dutys.user_id}"}
