@@ -51,6 +51,13 @@ class DutiesController < ApplicationController
     end
   end
 
+  def mypage
+    @dutyall = Duty.find(DutyUser.where(user_id:current_user.id).pluck(:duty_id))
+    @roster = Roster.where(user_id:current_user.id)
+    @today = Date.current
+    render :index
+  end
+
   private
 
   def duty_params

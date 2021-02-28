@@ -20,7 +20,8 @@
     .login
       - if user_signed_in?
         .user-name
-          = "ユーザー名：#{current_user.nickname}"
+          = "ユーザー名："
+          = link_to current_user.nickname, mypage_duties_path, name: "mypage-btn"
         .user-btn
           = link_to "ログアウト", destroy_user_session_path, method: :delete, name: "destroy-session-btn"
       - else
