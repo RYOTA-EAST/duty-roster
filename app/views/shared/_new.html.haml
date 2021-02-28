@@ -1,15 +1,15 @@
 %div
   = form_with model: @dutynew, local: true do |f|
     = render 'layouts/error_messages', model: f.object
-    .dutyform
+    .duty-form
     = f.label :当番表名, class: 'duty-label'
-    .dutyform
+    .duty-form
     = f.text_field :name, class: 'duty_name_input', placeholder: '当番表名を入力してください'
-    .dutyform
+    .duty-form
     = f.label :メンバー, class: 'duty-label'
-    .dutyform
+    .duty-form
     = collection_check_boxes :duty, :user_ids, User.where.not(id: current_user.id), :id, :nickname do |user|
       = user.label { user.check_box + user.text }
     %input{:name => "duty[user_ids][]", :type => "hidden", :value => current_user.id}
-    .dutyform
+    .duty-form
     = f.submit "当番表作成", class: "btn btn-outline-primary"

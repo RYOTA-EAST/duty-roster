@@ -17,14 +17,19 @@
         %th.roster-date 日付
         - @dutys.each do |dutys|
           %th.roster-name
-            = dutys.user.nickname
+            .name= dutys.user.nickname
+            .count= "#{@roster.where(user_id: dutys.user.id).count}回"
     %tbody
       - 20.times do |i|
-        %tr{id: "#{@today + 5 - i}"}
+      - day = @today + 5 - i
+        %tr{id: "#{day}",class: "#{day.strftime('%a')}"}
           %td
-            = (@today + 5 - i).strftime('%Y/%m/%d')
+            = day.strftime('%Y/%m/%d(%a)')
+            - if @today == day
+              = "Today"
+            
             - @dutys.each do |dutys|
               %td{class: "#{dutys.user_id}"}
                 - @roster.each do |roster|
-                  - if (@today + 5 - i) == roster.date && dutys.user_id == roster.user_id
+                  - if day == roster.date && dutys.user_id == roster.user_id
                     = link_to '○', duty_roster_path(@dutyfind, roster), method: :delete ,name: "check-btn"

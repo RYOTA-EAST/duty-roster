@@ -57,10 +57,6 @@ class DutiesController < ApplicationController
     params.require(:duty).permit(:name, user_ids: [])
   end
 
-  def move_to_login
-    
-  end
-
   def set_parameters
     if user_signed_in?
       @dutyall = Duty.find(DutyUser.where(user_id:current_user.id).pluck(:duty_id))
