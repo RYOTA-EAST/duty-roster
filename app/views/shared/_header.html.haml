@@ -17,12 +17,18 @@
                 = link_to '編集', edit_duty_path, name: "edit-btn"
               .duty-btn
                 = link_to '削除', duty_path, method: :delete, name: "destroy-btn"
+                
+        - when "mypage"
+          .duty-btns
+
 
     .login
       - if user_signed_in?
         .user-name
-          = "ユーザー名："
+          .user-name-title= "ユーザー名："
           = link_to current_user.nickname, mypage_duties_path, name: "mypage-btn"
+        .duty-btn
+          = link_to '編集', edit_user_registration_path, name: "edit-btn"
         .user-btn
           = link_to "ログアウト", destroy_user_session_path, method: :delete, name: "destroy-session-btn"
       - else
