@@ -3,23 +3,22 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :duty_all, only: [:new, :create, :edit]
 
   # GET /resource/sign_up
   def new
-    @dutyall = Duty.all
     super
   end
 
   # POST /resource
   def create
-    @dutyall = Duty.all
     super
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
   # def update
@@ -41,6 +40,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+  private
+  def duty_all
+    @dutyall = Duty.all
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
