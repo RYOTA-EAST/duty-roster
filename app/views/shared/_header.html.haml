@@ -1,14 +1,15 @@
 %header 
   .title
     %a.title-ja{ :href => root_path } 当 番 表
-    %p.title-en duty roster
+    .title-en duty roster
   .right-up-content
     .show-content
       - case action_name
         - when "show"
           .duty-name
-            %p
+            .duty-name-1
               当番表名：
+            %h5.duty-name-2
               = @dutyfind.name
           - if user_signed_in? && @users.include?(current_user.id)
             .duty-btns

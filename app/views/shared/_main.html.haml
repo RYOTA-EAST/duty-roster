@@ -1,61 +1,62 @@
-%h1 当番表アプリ[duty roster]
+.roster
+  %h1 当番表アプリ[duty roster]
 
-%p 当番表を作成するアプリです
-%p 
+  %p 当番表を作成するアプリです
+  %p 
 
-%div.roster
-%p (sample)ホスト役
-%table.roster-table
-  %tr 
-    %th 日付
-    - @user.each do |user|
-      %th.roster-name
-        = user.nickname
-  %tr 
-    %td 2021/2/20
-    %td 
-    %td 
-    %td ◎
-    %td 
-  %tr 
-    %td 2021/2/19
-    %td ○
-    %td 
-    %td 
-    %td 
-  %tr 
-    %td 2021/2/18
-    %td 
-    %td 
-    %td ○
-    %td 
-  %tr 
-    %td 2021/2/17
-    %td 
-    %td ○
-    %td 
-    %td 
-  %tr 
-    %td 2021/2/16
-    %td 
-    %td 
-    %td 
-    %td ○
-  %tr 
-    %td 2021/2/15
-    %td 
-    %td 
-    %td ○
-    %td 
-  %tr 
-    %td 2021/2/14
-    %td 
-    %td ○
-    %td 
-    %td 
-  %tr 
-    %td 2021/2/13
-    %td 
-    %td ◎
-    %td 
-    %td 
+  %div.roster
+  %p (sample)ホスト役
+  %table.roster-table
+    %tr 
+      %th 日付
+      - @user.each do |user|
+        %th.roster-name
+          = user.nickname
+    %tr 
+      %td 2021/2/20
+      %td 
+      %td 
+      %td ◎
+      %td 
+    %tr 
+      %td 2021/2/19
+      %td ○
+      %td 
+      %td 
+      %td 
+    %tr 
+      %td 2021/2/18
+      %td 
+      %td 
+      %td ○
+      %td 
+    %tr 
+      %td 2021/2/17
+      %td 
+      %td ○
+      %td 
+      %td 
+    %tr 
+      %td 2021/2/16
+      %td 
+      %td 
+      %td 
+      %td ○
+    %tr 
+      %td 2021/2/15
+      %td 
+      %td 
+      %td ○
+      %td 
+    %tr 
+      %td 2021/2/14
+      %td 
+      %td ○
+      %td 
+      %td 
+    %tr 
+      %td 2021/2/13
+      %td 
+      %td ◎
+      %td 
+      %td 

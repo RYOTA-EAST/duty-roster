@@ -20,8 +20,8 @@
             .name= dutys.user.nickname
             .count= "#{@roster.where(user_id: dutys.user.id).count}回"
     %tbody
-      - 20.times do |i|
-      - day = @today + 5 - i
+      - 14.times do |i|
+      - day = @today + 7 - i
         %tr{id: "#{day}",class: "#{day.strftime('%a')}"}
           %td
             = day.strftime('%Y/%m/%d(%a)')
