@@ -1,5 +1,4 @@
--# ヘッダー表示
-= render 'shared/header' ,dutyfind: @dutyfind
+
 
 %body 
 .content
@@ -37,6 +36,3 @@
             = render 'shared/show', roster: @roster
           - when "create"
             = render 'shared/show', rosternew: @rosternew
-
--# フッター表示
-= render 'shared/footer' 
