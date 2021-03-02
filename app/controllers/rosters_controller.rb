@@ -11,7 +11,7 @@ class RostersController < ApplicationController
   def create
     @rosternew = @dutyfind.rosters.new(roster_params)
     if @rosternew.save
-      redirect_to duty_path(params[:duty_id])
+      redirect_to new_duty_roster_path(params[:duty_id])
     else
     @roster = Roster.where(duty_id: @dutyfind.id)
     render template: 'duties/index'

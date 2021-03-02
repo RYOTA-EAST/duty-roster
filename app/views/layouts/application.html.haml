@@ -9,4 +9,10 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    -# ヘッダー表示
+    = render 'shared/header' ,dutyfind: @dutyfind
+
     = yield
+    
+    -# フッター表示
+    = render 'shared/footer' 
