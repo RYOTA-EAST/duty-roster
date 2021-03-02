@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action :duty_all, only: [:edit, :update]
+  before_action :duty_all, only: [:new, :create, :edit, :update]
 
   # GET /resource/sign_up
   def new
@@ -43,7 +43,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
   private
   def duty_all
-    @dutyall = Duty.find(DutyUser.where(user_id:current_user.id).pluck(:duty_id))
+    if user_signed_in?
+      @dutyall = Duty.find(DutyUser.where(user_id:current_user.id).pluck(:duty_id))
+    else
+      @dutyall = Duty.all
+    end
   end
 
   # If you have extra params to permit, append them to the sanitizer.
