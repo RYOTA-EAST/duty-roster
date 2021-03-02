@@ -7,16 +7,18 @@ window.addEventListener('load', function(){
   for( var i=0,l=users.length; l>i; i++ ) {
     var user = users[i] ;
     user.addEventListener('click', function(){
+
       for( var i=0,l=users.length; l>i; i++ ) {
         if (users[i].style.background = 'red') {
           users[i].style.background = 'none'
         }
       }
-      if (this.className.length == 1){
+      if (this.id == ""){
         document.getElementById('roster_user_id').value = this.className
         this.style.backgroundColor = 'red'
           // 日付取得
         for( var i=0,l=days.length; l>i; i++ ) {
+          
           var day = days[i] ;
           day.addEventListener('click', function(){
           document.getElementById('roster_date').value = this.id
