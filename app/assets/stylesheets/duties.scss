@@ -98,6 +98,7 @@ div.title{
   border-left: 3px solid lightskyblue;
   width: calc(100vw - 270px);
   height: calc(100vh - 15vh);
+  overflow: scroll;
 }
 
 .roster{
