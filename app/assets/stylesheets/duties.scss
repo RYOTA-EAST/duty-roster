@@ -135,7 +135,6 @@ table,td,th{
   width: 80px;
 }
 
-
 footer{
   display: flex;
   justify-content: center;
@@ -145,12 +144,6 @@ footer{
 
 .copyright{
   height: 5vh;
-}
-
-.duty-form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .roster-forms{
@@ -168,4 +161,8 @@ footer{
 
 .alert{
   color: red;
+}
+
+.duty-form-name{
+  margin-top: 20px;
 }
