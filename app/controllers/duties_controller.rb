@@ -24,7 +24,7 @@ class DutiesController < ApplicationController
 
   def show
     @dutys = DutyUser.where(duty_id: @dutyfind.id).includes(:user)
-    @roster = Roster.where(duty_id: @dutyfind.id)
+    @roster = Roster.where(duty_id: @dutyfind.id).includes(:user)
     @users = DutyUser.where(duty_id:@dutyfind.id).pluck(:user_id)
     render 'index'
   end
