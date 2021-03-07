@@ -18,7 +18,7 @@
         - @dutys.each do |dutys|
           %th.roster-name
             .name= dutys.user.nickname
-            .count= "#{@roster.where(user_id: dutys.user.id).count}回"
+            -# .count= "#{@roster.where(user_id: dutys.user.id).count}回"
     %tbody
       - 14.times do |i|
       - day = @today + 7 - i
