@@ -56,6 +56,12 @@ class DutiesController < ApplicationController
     render :index
   end
 
+  def search
+    return nil if params[:keyword] == ""
+    user = User.where(['nickname LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: user }
+  end
+
   private
 
   def duty_params

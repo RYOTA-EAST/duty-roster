@@ -1,3 +1,5 @@
+= javascript_include_tag "user"
+
 .roster
   %div
     = form_with model: @dutynew, local: true do |f|
@@ -7,10 +9,16 @@
       .duty-form
         = f.text_field :name, class: 'duty_name_input', placeholder: '当番表名を入力してください'
       .duty-form-name
-        = f.label :メンバー, class: 'duty-label'
+        = f.label :ユーザー名検索
       .duty-form
-        = collection_check_boxes :duty, :user_ids, User.where.not(id: current_user.id), :id, :nickname do |user|
-          = user.label { user.check_box + user.text }
+        = f.text_field :search, id: 'user_input'
+      #search-result
+      .duty-form-name
+        = f.label :メンバー, class: 'duty-label'
+      -# .duty-form
+      -#   = collection_check_boxes :duty, :user_ids, User.where.not(id: current_user.id), :id, :nickname do |user|
+      -#     = user.label { user.check_box + user.text }
+      #duty-user
       %input{:name => "duty[user_ids][]", :type => "hidden", :value => current_user.id}
       .duty-form-name
         = f.submit "当番表作成", class: "btn btn-outline-primary"
