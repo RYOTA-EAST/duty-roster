@@ -1,3 +1,5 @@
+= javascript_include_tag "user"
+
 .roster
   .form
     = form_with model: @dutyfind, local: true do |f|
@@ -7,9 +9,14 @@
       .duty-form
         = f.text_field :name, class: 'duty_name_input', placeholder: '当番表名を入力してください'
       .duty-form-name
-        = f.label :メンバー, class: 'duty-label'
+        = f.label :ユーザー名検索
       .duty-form
-        = f.collection_check_boxes(:user_ids, User.where.not(id: current_user.id), :id, :nickname) do |user|
+        = f.text_field :search, id: 'user_input'
+      #search-result
+      .duty-form-name
+        = f.label :メンバー, class: 'duty-label'
+      .duty-form#duty-user
+        = f.collection_check_boxes(:user_ids, User.find(DutyUser.where(duty_id: @dutyfind.id).where.not(user_id: current_user.id).pluck(:user_id)), :id, :nickname) do |user|
           = user.label { user.check_box + user.text }
       %input{:name => "duty[user_ids][]", :type => "hidden", :value => current_user.id}
       .duty-form-name

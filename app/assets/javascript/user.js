@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   inputElement.addEventListener("keyup", () => {
     const keyword = document.getElementById("user_input").value;
     const XHR = new XMLHttpRequest();
-    XHR.open("GET", `search/?keyword=${keyword}`, true);
+    XHR.open("GET", `/duties/search/?keyword=${keyword}`, true);
     XHR.responseType = "json";
     XHR.send();
     XHR.onload = () => {
