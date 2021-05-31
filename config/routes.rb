@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :duties do
     collection do
       get 'mypage'
+      get 'search'
     end
     resources :rosters, only: [:new, :create, :destroy]
   end
