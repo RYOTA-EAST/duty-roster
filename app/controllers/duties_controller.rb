@@ -58,7 +58,7 @@ class DutiesController < ApplicationController
 
   def search
     return nil if params[:keyword] == ""
-    user = User.where(['nickname LIKE ?', "%#{params[:keyword]}%"] )
+    user = User.where(['nickname LIKE ?', "%#{params[:keyword]}%"] ).where.not(id: current_user.id)
     render json:{ keyword: user }
   end
 
