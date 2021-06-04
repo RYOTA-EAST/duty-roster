@@ -1,35 +1,41 @@
+.row
+  .roster
+    .roster-top
+      - case action_name
+        - when "new"
+          = render 'rosters/new', rosternew: @rosternew
+        - when "create"
+          = render 'rosters/new', rosternew: @rosternew
+        - else
+          - if user_signed_in? && @users.include?(current_user.id)
+            .duty-btn
+              = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
 
-.roster
-  .roster-top
-    - case action_name
-      - when "new"
-        = render 'rosters/new', rosternew: @rosternew
-      - when "create"
-        = render 'rosters/new', rosternew: @rosternew
-      - else
-        - if user_signed_in? && @users.include?(current_user.id)
-          .duty-btn
-            = link_to 'チェック', new_duty_roster_path(@dutyfind.id)
-
-  %table#roster-table
-    %thead
-      %tr 
-        %th.roster-date 日付
-        - @dutys.each do |dutys|
-          %th.roster-name
-            .name= dutys.user.nickname
-            .count= "#{@roster.where(user_id: dutys.user.id).count}回"
-    %tbody
-      - 14.times do |i|
-      - day = @today + 7 - i
-        %tr{id: "#{day}",class: "#{day.strftime('%a')}"}
-          %td
-            = day.strftime('%Y/%m/%d(%a)')
-            - if @today == day
-              = "Today"
-            
-            - @dutys.each do |dutys|
-              %td{class: "#{dutys.user_id}"}
-                - @roster.each do |roster|
-                  - if day == roster.date && dutys.user_id == roster.user_id
-                    = link_to '○', duty_roster_path(@dutyfind, roster), method: :delete ,name: "check-btn"
+    %table#roster-table
+      %thead
+        %tr 
+          %th.roster-date 日付
+          - @dutys.each do |dutys|
+            %th.roster-name
+              .name= dutys.user.nickname
+              .count= "#{@roster.where(user_id: dutys.user.id).count}回"
+      %tbody
+        - 14.times do |i|
+        - day = @today + 7 - i
+          %tr{id: "#{day}",class: "#{day.strftime('%a')}"}
+            %td
+              = day.strftime('%Y/%m/%d(%a)')
+              - if @today == day
+                = "Today"
+              
+              - @dutys.each do |dutys|
+                %td{class: "#{dutys.user_id}"}
+                  - @roster.each do |roster|
+                    - if day == roster.date && dutys.user_id == roster.user_id
+                      = link_to '○', duty_roster_path(@dutyfind, roster), method: :delete ,name: "check-btn"
+  .row.ml-1
+    .col
+      %h3 
+        %u 当番表説明文
+      .description.card.p-4
+        = markdown(@dutyfind.description).html_safe

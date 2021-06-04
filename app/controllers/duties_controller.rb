@@ -65,7 +65,7 @@ class DutiesController < ApplicationController
   private
 
   def duty_params
-    params.require(:duty).permit(:name, user_ids: [])
+    params.require(:duty).permit(:name, :description, user_ids: [])
   end
 
   def set_parameters

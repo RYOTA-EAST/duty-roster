@@ -166,3 +166,20 @@ footer{
 .duty-form-name{
   margin-top: 20px;
 }
+
+ul{
+  list-style: inside;
+}
+
+ol{
+  list-style: inside;
+  list-style-type: decimal;
+}
+
+.code{
+  margin: 20px;
+}
+
+.CodeRay{
+  border: 1px solid black;
+}

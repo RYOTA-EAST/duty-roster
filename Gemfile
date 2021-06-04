@@ -66,3 +66,6 @@ gem 'devise'
 
 gem 'bootstrap'
 gem 'jquery-rails'
+
+gem 'redcarpet' # マークダウン
+gem 'coderay' # シンタックスハイライト
