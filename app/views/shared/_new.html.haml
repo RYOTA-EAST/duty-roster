@@ -9,6 +9,10 @@
       .duty-form
         = f.text_field :name, class: 'duty_name_input', placeholder: '当番表名を入力してください'
       .duty-form-name
+        = f.label :説明文, class: 'duty-label'
+      .duty-form
+        = f.text_area :description, size: "80x10", class: 'duty_name_input', placeholder: '説明文をマークダウンで入力してください'
+      .duty-form-name
         = f.label :ユーザー名検索
       .duty-form
         = f.text_field :search, id: 'user_input'
