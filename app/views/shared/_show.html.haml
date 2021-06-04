@@ -38,4 +38,5 @@
       %h3 
         %u 当番表説明文
       .description.card.p-4
-        = markdown(@dutyfind.description).html_safe
+        - unless @dutyfind.description == nil
+          = markdown(@dutyfind.description).html_safe
