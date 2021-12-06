@@ -24,4 +24,4 @@
           = user.label { user.check_box + user.text }
       %input{:name => "duty[user_ids][]", :type => "hidden", :value => current_user.id}
       .duty-form-name
-      = f.submit
+      = f.submit "編集", class: "btn btn-outline-primary"
